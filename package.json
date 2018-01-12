@@ -1,0 +1,22 @@
+{
+  "name": "stocks",
+  "version": "1.0.0",
+  "description": "track your stock performance",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jammin2shirts/stocks.git"
+  },
+  "dependencies":{
+    "express" : "*"
+  },
+  "author": "jammin2shirts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jammin2shirts/stocks/issues"
+  },
+  "homepage": "https://github.com/jammin2shirts/stocks#readme"
+}

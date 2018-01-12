@@ -1,6 +1,6 @@
 This is my freaking todo list outlining what the fuck I should do next!?! 
 
-1.  Start server
+1.  DONE - Start server
 2.  Connect database
 3.  Add select, insert, update, delete functionality 
 4.  Connect db functionality to webpage using routes
