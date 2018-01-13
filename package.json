@@ -11,7 +11,8 @@
     "url": "git+https://github.com/jammin2shirts/stocks.git"
   },
   "dependencies":{
-    "express" : "*"
+    "express" : "*",
+    "pg" : "*"
   },
   "author": "jammin2shirts",
   "license": "ISC",
