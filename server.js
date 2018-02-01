@@ -28,14 +28,19 @@ var insertQuery = function (err, res) {
 
 var updateSetValue = [9];
 var updateQualifierValue = [5];
-var updateQuery = function (err, res) {
-  client.query('UPDATE tmp SET id = $1 WHERE id = $2', updateSetValue, updateQualifierValue)
-  .then(res => console.log('successful update'))
-  .catch(e => console.error(e.stack))
-};
+var updateQuery = function ()  {
+  var query = "UPDATE tmp SET id = "+ updateSetValue+" WHERE id = "+updateQualifierValue;
+  client.query(query, (err, res) => {
+    if (err) {
+    console.log(err.stack)
+    } else {
+      console.log(res.rows[0]);
+    }
+  });
+}
 
 //insertQuery();
-updateQuery();
+//updateQuery();
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
