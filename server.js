@@ -39,8 +39,20 @@ var updateQuery = function ()  {
   });
 }
 
+var deleteId = 9
+var deleteQuery = function()  {
+  client.query('DELETE from tmp WHERE id = $1', [deleteId], (err, res) => {
+    if (err) {
+      console.log(err.stack)
+      } else {
+        console.log("record deleted");
+      }
+  });
+}
+
 //insertQuery();
 //updateQuery();
+//deleteQuery();
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
