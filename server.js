@@ -7,6 +7,10 @@ const client = new Client ({
 });
 
 
+
+app.use(express.static(__dirname));
+
+
 client.connect((err) => {
   if (err) {
     console.error('connection error', err.stack)
@@ -15,21 +19,32 @@ client.connect((err) => {
   }
 });
 
-client.query('SELECT * from tmp')
-.then(res => console.log(res.rows))
-.catch(e => console.error(e.stack));
-
-var insertValue = [5];
-var insertQuery = function (err, res) {
-  client.query('INSERT INTO tmp (id) values ($1) returning *', insertValue)
-  .then(res => console.log(res.rows[0]))
-  .catch(e => console.error(e.stack))
+var retrieveAll = function()  {
+  var query = 'SELECT * FROM tmp';
+  client.query(query, (err, res) => {
+    if(err) {
+      console.log(err.stack)
+    } else{
+      console.log(res);
+    }
+  });
 };
 
-var updateSetValue = [9];
-var updateQualifierValue = [5];
-var updateQuery = function ()  {
-  var query = "UPDATE tmp SET id = "+ updateSetValue+" WHERE id = "+updateQualifierValue;
+
+// var insertValue = [5];
+var insertQuery = function (insertValue) {
+  var query = 'INSERT INTO tmp (id) values ('+ insertValue +') returning * ';
+  client.query(query, (err, res) => {
+    if (err) {
+    console.log(err.stack)
+    } else {
+      console.log(res.rows[0]);
+    }
+  });
+};
+
+var updateQuery = function (updateSetValue, updateQualifierValue)  {
+  var query = "UPDATE tmp SET id = "+ updateSetValue+" WHERE id = "+updateQualifierValue + " returning *";
   client.query(query, (err, res) => {
     if (err) {
     console.log(err.stack)
@@ -38,22 +53,35 @@ var updateQuery = function ()  {
     }
   });
 }
-
-var deleteId = 9
-var deleteQuery = function()  {
+var deleteQuery = function(deleteId)  {
   client.query('DELETE from tmp WHERE id = $1', [deleteId], (err, res) => {
     if (err) {
       console.log(err.stack)
       } else {
-        console.log("record deleted");
+        console.log("record id:"+deleteId+" deleted");
       }
   });
 }
 
-//insertQuery();
-//updateQuery();
-//deleteQuery();
+ // insertQuery(8);
+// updateQuery(9,5);
+// deleteQuery(9);
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/getStocks', function(req, res) {
+  console.log("Getting records ");
+  var query = 'SELECT * FROM tmp';
+  client.query(query, (err, result) => {
+    if(err) {
+      console.log(err.stack)
+    } else{
+      console.log(result.row);
+      res.json(result.rows);
+    }
+  });
+});
+
+// app.post('/insert', (req, res)  {
+
+// });
 
 app.listen(3000, ()=> console.log('Server running on port 3000'));

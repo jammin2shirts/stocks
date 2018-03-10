@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="stockApp">
+    <head>
+        <title>Stocker</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="/node_modules/angular/angular.js"></script>
+        <script src="app.js"></script>
+        <style>.panel{width:250px}</style>
+    </head>
+    <body>
+        <div ng-controller="userInputController">
+            <h2>  {{welcome;}} </h2
+            
+            <div ng-repeat='stock in storedStocks'>
+                <p>Stock id {{stock}}</p>
+            </div>
+        </div>
+    </body>
+</html>

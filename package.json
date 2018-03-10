@@ -10,9 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/jammin2shirts/stocks.git"
   },
-  "dependencies":{
-    "express" : "*",
-    "pg" : "*"
+  "dependencies": {
+    "angular": "^1.6.9",
+    "angularjs": "0.0.1",
+    "express": "*",
+    "pg": "*",
+    "schema": "^0.2.1"
   },
   "author": "jammin2shirts",
   "license": "ISC",

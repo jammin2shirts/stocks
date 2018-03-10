@@ -4,4 +4,4 @@ This is my freaking todo list outlining what the fuck I should do next!?!
 2.  DONE - Connect database
 3.  DONE - Add select, insert, update, delete functionality 
 4.  Connect db functionality to webpage using routes
-5. next thing
+5.  Display data well
