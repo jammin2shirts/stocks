@@ -15,8 +15,8 @@ stockApp.controller("userInputController",   function($scope, $http) {
             method: 'GET',
             url: '/getStocks'
         }).then(function successCallback(res)   {
-            console.log('Successful Callback! ' + res);
-             $scope.storedStocks = res;
+            console.log('Successful Callback! ' + res.data);
+             $scope.storedStocks[] = res.data;
         }, function errorCallback(err)  {
             console.log('Error Callback!');
         });

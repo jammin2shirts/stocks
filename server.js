@@ -74,8 +74,8 @@ app.get('/getStocks', function(req, res) {
     if(err) {
       console.log(err.stack)
     } else{
-      console.log(result.row);
-      res.json(result.rows);
+      console.log(JSON.stringify(result.rows));
+      res.json(JSON.stringify(result.rows));
     }
   });
 });
